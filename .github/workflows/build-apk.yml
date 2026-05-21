@@ -1,9 +1,11 @@
 name: Build Flet APK
 on:
-  workflow_dispatch:  # This lets you click a button to start it
+  workflow_dispatch:  # This line fixes your error!
+  push:
+    branches: [main]
 
 jobs:
-  build-apk:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,5 +15,5 @@ jobs:
       - run: flet build apk --yes
       - uses: actions/upload-artifact@v4
         with:
-          name: my-app-apk
+          name: my-app
           path: build/*/apk/*.apk
