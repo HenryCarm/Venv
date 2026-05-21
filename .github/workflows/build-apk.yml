@@ -1,0 +1,30 @@
+name: Build Flet APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install Flet
+        run: |
+          pip install flet
+        
+      - name: Build APK
+        run: |
+          flet build apk --yes
+          
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release
+          path: build/flutter/outputs/apk/release/*.apk
