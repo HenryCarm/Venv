@@ -1,0 +1,10 @@
+name: myscreen_acow
+description: Audio Cast Over Wifi
+version: 1.0.0
+android:
+  permissions:
+    - android.permission.RECORD_AUDIO
+    - android.permission.FOREGROUND_SERVICE
+    - android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION
+    - android.permission.INTERNET
+
